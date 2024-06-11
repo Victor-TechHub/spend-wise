@@ -1,8 +1,12 @@
-import './App.css'
+import { ThemeProvider } from "styled-components"
+import SignUp from "./screens/auth/sign_up"
+import { darkTheme } from "./styles/theme/styles"
 
-function App() {
+const App = () => {
   return (
-    <>Hello WOrld</>
+    <ThemeProvider theme={darkTheme}>
+      <SignUp />
+    </ThemeProvider>
   )
 }
 
