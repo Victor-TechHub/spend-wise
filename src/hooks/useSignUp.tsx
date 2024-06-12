@@ -5,12 +5,9 @@ import { FormData, IuseFormValiation } from "@/types/form"
 import { useNavigate } from "react-router-dom";
 import { useAuthCtx } from "@/context/Auth"
 
-
-
 const useSignUp = (): IuseFormValiation => {
     const navigate = useNavigate()
-    const { signUp } = useAuthCtx()
-
+    const { signUp, signInWithGoogle } = useAuthCtx()
 
     const { register, formState: { errors }, handleSubmit } = useForm<FormData>({
         resolver: zodResolver(schema)
@@ -19,7 +16,12 @@ const useSignUp = (): IuseFormValiation => {
         const { email, password, username } = data
         signUp(email, password, username, navigate)
     }
-    return { register, errors, handleSubmit, onSubmit }
+
+    const handleClick = (e: React.FormEvent) => {
+        e.preventDefault()
+        signInWithGoogle(navigate)
+    }
+    return { register, errors, handleSubmit, onSubmit, handleClick }
 }
 
 export default useSignUp

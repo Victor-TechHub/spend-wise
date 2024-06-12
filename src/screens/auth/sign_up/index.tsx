@@ -22,7 +22,7 @@ import { ACCESS_ROUTE } from "@/routes/path";
 import useSignUp from "@/hooks/useSignUp";
 
 const SignUp = () => {
-    const { register, handleSubmit, onSubmit, errors } = useSignUp()
+    const { register, handleSubmit, onSubmit, errors, handleClick } = useSignUp()
 
     //passed as a prop to the password input
     const [isTypePassword, setIsTypePassword] = React.useState(true)
@@ -44,7 +44,7 @@ const SignUp = () => {
                         <h2>Welcome!</h2>
                         <p>Create Your Account In <i style={{ color: "#a392fa" }}>SpendWise</i> to continue</p>
                         <ButtonGroup>
-                            <ButtonSDK><FcGoogle size={20} /> Log in with Google</ButtonSDK>
+                            <ButtonSDK onClick={handleClick}><FcGoogle size={20} /> Log in with Google</ButtonSDK>
                             <ButtonSDK><i><GrApple size={20} /></i> Log in with Apple</ButtonSDK>
                         </ButtonGroup>
                     </LoginSDKs>

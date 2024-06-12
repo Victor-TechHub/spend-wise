@@ -17,22 +17,14 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { GrApple } from "react-icons/gr";
 import { motion } from "framer-motion"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ACCESS_ROUTE } from "@/routes/path";
 import useSignIn from "@/hooks/useSignIn";
-import { useAuthCtx } from "@/context/Auth";
 
 const SignIn = () => {
-    const navigate = useNavigate()
-    const { register, handleSubmit, onSubmit, errors } = useSignIn()
-    const { signInWithGoogle } = useAuthCtx()
+    const { register, handleSubmit, onSubmit, errors, handleClick } = useSignIn()
     //passed as a prop to the password input
     const [isTypePassword, setIsTypePassword] = React.useState(true)
-
-    const handleClick = (e: React.FormEvent) => {
-        e.preventDefault()
-        signInWithGoogle(navigate)
-    }
 
     return (
         <SignUpContainer>

@@ -4,5 +4,5 @@ export const PRIVATE_ROUTE = {
 
 export const ACCESS_ROUTE = {
     SIGNUP: "/sign-up",
-    SIGNIN: "/sign-in",
+    SIGNIN: "/",
 }
