@@ -101,7 +101,7 @@ p {
 
 const ButtonSDK = styled.button`
     background:  ${props => props.theme.gray};
-    border: 1px solid  ${props => props.theme.grayLight};
+    border: 1px solid  ${props => props.theme.gray};
     padding: .6em;
     border-radius: 5px;
     text-align: center;
@@ -119,7 +119,7 @@ const ButtonSDK = styled.button`
     }
 
     &:hover {
-        background: #191818;
+        border-color: ${props => props.theme.grayLight};
     }
 `
 

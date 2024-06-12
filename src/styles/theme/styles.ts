@@ -9,9 +9,9 @@ export const darkTheme = {
 
 export const lightTheme = {
     secondary: "#a392fa",
-    background: "F6F6F6",
+    background: "#f2f2f2",
     color: "rgb(9, 9, 9)",
-    gray: "rgb(48, 46, 46)",
+    gray: "#C9C7C1",
     grayLight: "rgb(48, 46, 46)",
     textGray: "rgb(9, 9, 9)"
 }

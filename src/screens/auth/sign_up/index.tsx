@@ -1,3 +1,4 @@
+import * as React from "react"
 import Man from "../../../../public/Mobile_marketing-removebg.png"
 import TextField from "@/components/Textfield";
 import { Logo } from "@/styles/body"
@@ -16,8 +17,14 @@ import {
 import { FcGoogle } from "react-icons/fc";
 import { GrApple } from "react-icons/gr";
 import { motion } from "framer-motion"
+import useFormValidation from "@/hooks/useFormValidation";
 
 const SignUp = () => {
+    const { register, handleSubmit, onSubmit, errors } = useFormValidation()
+
+    //passed as a prop to the password input
+    const [isTypePassword, setIsTypePassword] = React.useState(true)
+
     return (
         <SignUpContainer>
             {/* Form */}
@@ -44,20 +51,26 @@ const SignUp = () => {
                         <i /> <legend>OR</legend> <i />
                     </OR>
 
-                    <FormContainer>
+                    <FormContainer onSubmit={handleSubmit(onSubmit)}>
                         <TextField
                             label="Email"
                             name="email"
                             placeholder="Your email address"
                             type="email"
+                            register={register}
+                            error={errors.email}
                         />
                         <TextField
                             label="Password"
                             name="password"
                             placeholder="Your password"
-                            type="password"
+                            type={isTypePassword ? "password" : "text"}
+                            register={register}
+                            error={errors.password}
+                            isTypePassword={isTypePassword}
+                            setIsTypePassword={setIsTypePassword}
                         />
-                        <LoginButton>
+                        <LoginButton type="submit">
                             Login
                         </LoginButton>
                     </FormContainer>

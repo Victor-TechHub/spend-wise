@@ -1,26 +1,39 @@
-import { Field, InputField } from "./styles"
+import { ErrorElement, Field, InputField } from "./styles"
 import { FaRegEye } from "react-icons/fa6";
+import { InputProps } from "@/types/form";
+import { FaRegEyeSlash } from "react-icons/fa6";
 
-type PropType = {
-    label: string
-    type: string
-    placeholder: string
-    name: "email" | "password"
-}
+const TextField = (props: InputProps) => {
 
-const TextField = (props: PropType) => {
-    const { label, type, placeholder, name } = props
+    const { label, type, placeholder, name, register, error, setIsTypePassword, isTypePassword } = props
     return (
         <InputField>
             <label htmlFor={name}>{label}</label>
-            <Field>
+            <Field
+                style={{
+                    borderColor: error && "red"
+                }}
+            >
                 <input
                     type={type}
                     placeholder={placeholder}
+                    {...register(name)}
                     name={name}
                 />
-                {name === "password" && <FaRegEye size={18} />}
+                <i onClick={() => setIsTypePassword!(state => !state)}>
+                    {
+                        !!isTypePassword && name === "password" && type === "password"
+                            ?
+                            <FaRegEyeSlash size={18} />
+                            :
+                            !isTypePassword && type === "text"
+                                ?
+                                <FaRegEye size={18} />
+                                : ""
+                    }
+                </i>
             </Field>
+            {error && <ErrorElement>{error.message}</ErrorElement>}
         </InputField>
     )
 }
