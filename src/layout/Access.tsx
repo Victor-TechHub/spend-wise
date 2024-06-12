@@ -1,8 +1,7 @@
+import { Outlet } from "react-router-dom"
 
 const Access = () => {
-    return (
-        <div>Access</div>
-    )
+    return <Outlet />
 }
 
 export default Access

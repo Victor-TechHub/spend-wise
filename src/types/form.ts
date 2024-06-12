@@ -3,6 +3,7 @@ import { FieldError, FieldErrors, UseFormHandleSubmit, UseFormRegister } from "r
 export interface FormData {
     email: string
     password: string
+    username: string
 }
 
 export interface IuseFormValiation {
@@ -23,4 +24,4 @@ export interface InputProps {
     isTypePassword?: boolean
 }
 
-type InputNames = "email" | "password"
+type InputNames = "email" | "password" | "username"

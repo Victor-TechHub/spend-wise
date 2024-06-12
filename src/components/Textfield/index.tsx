@@ -22,11 +22,11 @@ const TextField = (props: InputProps) => {
                 />
                 <i onClick={() => setIsTypePassword!(state => !state)}>
                     {
-                        !!isTypePassword && name === "password" && type === "password"
+                        !!isTypePassword && name === "password"
                             ?
                             <FaRegEyeSlash size={18} />
                             :
-                            !isTypePassword && type === "text"
+                            !isTypePassword && name === "password"
                                 ?
                                 <FaRegEye size={18} />
                                 : ""

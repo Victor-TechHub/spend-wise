@@ -3,7 +3,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ToastElement = () => {
     return (
-        <ToastContainer position="top-left" stacked draggable theme="light" />
+        <ToastContainer
+            position="top-left"
+            stacked
+            draggable
+            theme="light"
+        />
     )
 }
 

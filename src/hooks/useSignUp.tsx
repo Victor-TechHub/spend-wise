@@ -2,18 +2,24 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { schema } from "@/utils/zod"
 import { FormData, IuseFormValiation } from "@/types/form"
-import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom";
+import { useAuthCtx } from "@/context/Auth"
 
 
-const useFormValidation = (): IuseFormValiation => {
+
+const useSignUp = (): IuseFormValiation => {
+    const navigate = useNavigate()
+    const { signUp } = useAuthCtx()
+
+
     const { register, formState: { errors }, handleSubmit } = useForm<FormData>({
         resolver: zodResolver(schema)
     })
     const onSubmit = (data: FormData): void => {
-        toast.success("Welcome!")
-        console.log(data)
+        const { email, password, username } = data
+        signUp(email, password, username, navigate)
     }
     return { register, errors, handleSubmit, onSubmit }
 }
 
-export default useFormValidation
+export default useSignUp

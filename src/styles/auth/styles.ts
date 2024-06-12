@@ -57,13 +57,13 @@ const Select = styled.select`
     }
 `
 
-const Wrapper = styled.section`
+const Wrapper = styled.section<{ $margin?: string }>`
     display: flex;
     flex-direction: column;
     width: 70%;
     gap: 1em;
     margin-inline: auto;
-    margin-block-start: 7em;
+    margin-block-start: ${props => props.$margin || "4em"};
 
 
     :is(span) {
@@ -80,6 +80,15 @@ const FormContainer = styled.form`
     gap: 1em;
     width: 80%;
     margin: auto;
+
+    :is(a) {
+        color: ${props => props.theme.color};
+        text-decoration: none;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 
       @media screen and (max-width: 550px){
      width: 100% !important;
