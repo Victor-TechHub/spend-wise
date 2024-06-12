@@ -7,7 +7,7 @@ const ToastElement = () => {
             position="top-left"
             stacked
             draggable
-            theme="light"
+            theme="dark"
         />
     )
 }
