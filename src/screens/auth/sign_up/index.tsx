@@ -1,5 +1,6 @@
 import * as React from "react"
-import Man from "../../../../public/Mobile_marketing-removebg.png"
+import Man from "/Mobile_marketing-removebg.png"
+import LOGO from "/spendwise_logo.png"
 import TextField from "@/components/Textfield";
 import { Logo } from "@/styles/body"
 import {
@@ -20,19 +21,19 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
 import { ACCESS_ROUTE } from "@/routes/path";
 import useSignUp from "@/hooks/useSignUp";
+import { useAuthCtx } from "@/context/Auth";
 
 const SignUp = () => {
     const { register, handleSubmit, onSubmit, errors, handleClick } = useSignUp()
-
-    //passed as a prop to the password input
-    const [isTypePassword, setIsTypePassword] = React.useState(true)
+    const { isSigningUp } = useAuthCtx()
+    const [isTypePassword, setIsTypePassword] = React.useState(true) //passed as a prop to the password input
 
     return (
         <SignUpContainer>
             {/* Form */}
             <div>
                 <Header>
-                    <Logo>SpendWise</Logo>
+                    <Logo><img src={LOGO} width={40} alt="Logo" />pendWise</Logo>
 
                     <Select id="lang">
                         <option value="en">English</option>
@@ -81,7 +82,9 @@ const SignUp = () => {
                             setIsTypePassword={setIsTypePassword}
                         />
 
-                        <LoginButton type="submit">
+                        <LoginButton
+                            type="submit"
+                            disabled={isSigningUp}>
                             Sign Up
                         </LoginButton>
                         <p>Already have an account? <Link to={ACCESS_ROUTE.SIGNIN}>Login</Link> </p>
@@ -95,9 +98,8 @@ const SignUp = () => {
                         y: [0, -30, 0]
                     }}
                     transition={{
-                        delay: 2,
-                        duration: 4,
-                        repeat: Infinity
+                        duration: 5,
+                        repeat: Infinity,
                     }}
                 >
                     <img src={Man} alt="Man" />

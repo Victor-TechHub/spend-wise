@@ -1,5 +1,6 @@
 import * as React from "react"
-import Man from "../../../../public/Mobile_marketing-removebg.png"
+import Man from "/Mobile_marketing-removebg.png"
+import LOGO from "/spendwise_logo.png"
 import TextField from "@/components/Textfield";
 import { Logo } from "@/styles/body"
 import {
@@ -20,9 +21,11 @@ import { motion } from "framer-motion"
 import { Link } from "react-router-dom";
 import { ACCESS_ROUTE } from "@/routes/path";
 import useSignIn from "@/hooks/useSignIn";
+import { useAuthCtx } from "@/context/Auth";
 
 const SignIn = () => {
     const { register, handleSubmit, onSubmit, errors, handleClick } = useSignIn()
+    const { isLoggingIn } = useAuthCtx()
     //passed as a prop to the password input
     const [isTypePassword, setIsTypePassword] = React.useState(true)
 
@@ -31,7 +34,7 @@ const SignIn = () => {
             {/* Form */}
             <div>
                 <Header>
-                    <Logo>SpendWise</Logo>
+                    <Logo><img src={LOGO} width={40} alt="Logo" />pendWise</Logo>
 
                     <Select id="lang">
                         <option value="en">English</option>
@@ -71,7 +74,7 @@ const SignIn = () => {
                             isTypePassword={isTypePassword}
                             setIsTypePassword={setIsTypePassword}
                         />
-                        <LoginButton type="submit">
+                        <LoginButton type="submit" disabled={isLoggingIn}>
                             Login
                         </LoginButton>
                         <p>Don't have an account? <Link to={ACCESS_ROUTE.SIGNUP}>Sign Up</Link></p>
@@ -85,8 +88,7 @@ const SignIn = () => {
                         y: [0, -30, 0]
                     }}
                     transition={{
-                        delay: 2,
-                        duration: 4,
+                        duration: 5,
                         repeat: Infinity
                     }}
                 >

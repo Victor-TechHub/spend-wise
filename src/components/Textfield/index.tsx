@@ -5,14 +5,21 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 
 const TextField = (props: InputProps) => {
 
-    const { label, type, placeholder, name, register, error, setIsTypePassword, isTypePassword } = props
+    const {
+        label,
+        type,
+        placeholder,
+        name,
+        register,
+        error,
+        setIsTypePassword,
+        isTypePassword
+    } = props
     return (
         <InputField>
             <label htmlFor={name}>{label}</label>
             <Field
-                style={{
-                    borderColor: error && "red"
-                }}
+                style={{ borderColor: error && "red" }}
             >
                 <input
                     type={type}

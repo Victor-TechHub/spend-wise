@@ -16,5 +16,6 @@ export const Logo = styled.span`
    font-weight: 400;
    letter-spacing: 2px;
    display: flex;
+   align-items: center;
    font-size: 1.5em;
 `

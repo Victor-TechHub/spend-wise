@@ -21,8 +21,7 @@ const SignUpContainer = styled.section`
         display: block;
         object-fit: contain;
         width: 110%;
-    filter: drop-shadow(0 70px 4em #646cffaa);
-
+        filter: drop-shadow(0 70px 5em #646cffaa);
     }
  }
     }
@@ -49,7 +48,7 @@ const Select = styled.select`
     color: ${props => props.theme.color};
     cursor: pointer;
     outline: 0;
-    transition: 350ms;
+    transition: 300ms;
 
 
     &:hover {
@@ -167,6 +166,11 @@ const LoginButton = styled.button`
     cursor: pointer;
     color: ${props => props.theme.color};
     transition: 350ms;
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: .7;
+    }
 
      &:hover {
         border-color: ${props => props.theme.grayLight};

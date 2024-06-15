@@ -12,19 +12,24 @@ const AuthCtx = createContext<IAuthCtx>({
     signUp: async () => { },
     login: async () => { },
     logOut: async () => { },
-    signInWithGoogle: async () => { }
+    signInWithGoogle: async () => { },
+    isSigningUp: false,
+    isLoggingIn: false
 })
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [currentUser, setCurrentUser] = useState<User | null>(null)
+    const [isSigningUp, setIsSigningUp] = useState(false)
+    const [isLoggingIn, setIsLoggingIn] = useState(false)
 
     const signUp = async (email: string, password: string, username: string, navigate: NavigateFunction): Promise<void> => {
         try {
+            setIsSigningUp(true)
             const { user } = await createUserWithEmailAndPassword(auth, email, password)
             await updateProfile(user, { displayName: username })
-            setCurrentUser(user)
             toast.success(`👋 Welcome aboard ${user?.displayName}!`)
             setTimeout(() => navigate(ACCESS_ROUTE.SIGNIN), 3000)
+            setTimeout(() => setIsLoggingIn(false), 5000)
 
             await addDoc(collection(database, "users"), {
                 id: user.uid,
@@ -35,15 +40,20 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             })
         } catch (err) {
             err instanceof Error && toast.error(err.message)
+            setIsSigningUp(false)
         }
     }
 
     const login = async (email: string, password: string, navigate: NavigateFunction): Promise<void> => {
         try {
-            await signInWithEmailAndPassword(auth, email, password)
-            toast.success(`👋 Welcome back ${currentUser?.displayName}`)
+            setIsLoggingIn(true)
+            const res = await signInWithEmailAndPassword(auth, email, password)
+            setCurrentUser(res.user)
+            toast.success(`👋 Welcome back ${res.user?.displayName}`)
             setTimeout(() => navigate(PRIVATE_ROUTE.DASHBOARD), 3000)
+            setTimeout(() => setIsLoggingIn(false), 5000)
         } catch (err) {
+            setIsLoggingIn(false)
             err instanceof Error && toast.error(err.message)
         }
     }
@@ -69,7 +79,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         signUp,
         login,
         logOut,
-        signInWithGoogle
+        signInWithGoogle,
+        isSigningUp,
+        isLoggingIn
     }
 
     return <AuthCtx.Provider value={values}>{children}</AuthCtx.Provider>

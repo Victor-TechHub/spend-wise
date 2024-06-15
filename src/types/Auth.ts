@@ -7,4 +7,6 @@ export interface IAuthCtx {
     login: (email: string, password: string, navigate: NavigateFunction) => Promise<void>
     logOut: () => Promise<void>
     signInWithGoogle: (navigate: NavigateFunction) => Promise<void>
+    isSigningUp: boolean
+    isLoggingIn: boolean
 }
