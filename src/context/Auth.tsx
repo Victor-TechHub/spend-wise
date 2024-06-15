@@ -38,6 +38,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 password,
                 createdAt: serverTimestamp()
             })
+            setTimeout(() => setIsSigningUp(false), 5000)
         } catch (err) {
             err instanceof Error && toast.error(err.message)
             setIsSigningUp(false)
