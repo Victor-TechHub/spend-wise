@@ -4,7 +4,7 @@ import { ACCESS_ROUTE, PRIVATE_ROUTE } from "./path"
 import SignIn from "@/screens/auth/sign_in"
 import SignUp from "@/screens/auth/sign_up"
 import ProtectedRoutes from "@/layout/ProtectedRoutes"
-import Home from "@/screens/private/Home"
+import Home from "@/screens/private/dashboard"
 
 export const routes = createBrowserRouter([
 

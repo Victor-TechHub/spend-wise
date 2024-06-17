@@ -10,14 +10,14 @@ export const InputField = styled.section`
 export const Field = styled.section<{ $error?: boolean }>`
         display: flex;
         align-items: center;
-        border: 1px solid ${props => props.theme.gray};
+        border: 1px solid ${props => props.theme.bg_2};
         border-radius: 5px;
         padding-inline-end: 1em;
         transition: 250ms;
         border-color: ${props => props.$error && "red"};
 
           &:hover {
-                border-color: ${props => props.theme.grayLight};
+                border-color: ${props => props.theme.secondary};
             }
 
         input {

@@ -1,22 +1,23 @@
 import { ThemeProvider } from "styled-components"
 import { darkTheme, lightTheme } from "./styles/theme/styles"
 import ToastElement from "./components/Toast"
-import useTheme from "./screens/hook/useTheme"
 import { AuthProvider } from "./context/Auth"
 import { RouterProvider } from "react-router-dom"
 import { routes } from "./routes/base"
 import Loader from "./components/Loader"
+import { useThemeCtx } from "./context/theme"
 
 const App = () => {
-  const { theme } = useTheme()
+  const { theme } = useThemeCtx()
+
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <AuthProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}> {/* Styled Components */}
         <ToastElement />
         <Loader />
         <RouterProvider router={routes} />
-      </AuthProvider>
-    </ThemeProvider>
+      </ThemeProvider>
+    </AuthProvider>
   )
 }
 

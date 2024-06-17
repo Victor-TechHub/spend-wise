@@ -8,14 +8,20 @@ export const GlobalStyles = createGlobalStyle`
     font-family: "Montserrat", sans-serif;
     font-size: 13px;
     }
-
 `
 
 export const Logo = styled.span`
-   color: ${({ theme }) => theme.secondary};
+   color: ${({ theme }) => theme.color};
    font-weight: 400;
    letter-spacing: 2px;
    display: flex;
    align-items: center;
-   font-size: 1.5em;
+   font-size: 1em;
+   text-transform: uppercase;
+   font-weight: 700;
+
+   img {
+    width: 30px;
+    object-fit: contain;
+   }
 `

@@ -41,7 +41,7 @@ const Loader = () => {
                             <Triangle
                                 height="90"
                                 width="90"
-                                color="#a392fa"
+                                color="#377CF6"
                                 ariaLabel="revolving-dot-loading"
                                 wrapperClass=""
                             />

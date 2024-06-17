@@ -61,11 +61,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     const signInWithGoogle = async (navigate: NavigateFunction): Promise<void> => {
         try {
+            setIsLoggingIn(true)
             const { user } = await signInWithPopup(auth, googleAuth)
             setCurrentUser(user)
             toast.success(`👋 Welcome back ${user?.displayName}`)
             setTimeout(() => navigate(PRIVATE_ROUTE.DASHBOARD), 3000)
+            setTimeout(() => setIsLoggingIn(false), 5000)
         } catch (err) {
+            setIsLoggingIn(false)
             err instanceof Error && toast.error(err.message)
         }
     }

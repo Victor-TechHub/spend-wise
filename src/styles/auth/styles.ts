@@ -21,7 +21,7 @@ const SignUpContainer = styled.section`
         display: block;
         object-fit: contain;
         width: 110%;
-        filter: drop-shadow(0 70px 5em #646cffaa);
+        filter: drop-shadow(0 70px 5em #377CF6);
     }
  }
     }
@@ -41,7 +41,7 @@ const Header = styled.header`
 `
 
 const Select = styled.select`
-    border: 1px solid ${props => props.theme.gray};
+    border: 1px solid ${props => props.theme.bgLight};
     padding: .6em 1.5em;
     background: ${props => props.theme.background};
     border-radius: 5px;
@@ -52,7 +52,7 @@ const Select = styled.select`
 
 
     &:hover {
-        border-color: ${props => props.theme.grayLight};
+        border-color: ${props => props.theme.secondary};
     }
 `
 
@@ -108,8 +108,8 @@ p {
 `
 
 const ButtonSDK = styled.button`
-    background:  ${props => props.theme.gray};
-    border: 1px solid  ${props => props.theme.gray};
+    background:  ${props => props.theme.bg_2};
+    border: 1px solid  ${props => props.theme.bg_2};
     padding: .6em;
     border-radius: 5px;
     text-align: center;
@@ -127,7 +127,7 @@ const ButtonSDK = styled.button`
     }
 
     &:hover {
-        border-color: ${props => props.theme.grayLight};
+        border-color: ${props => props.theme.secondary};
     }
 `
 
@@ -149,13 +149,13 @@ const OR = styled.div`
     i {
         flex: 1;
         height: 1px;
-        background: ${props => props.theme.grayLight};
+        background: ${props => props.theme.bgLight};
     }
 `
 
 const LoginButton = styled.button`
-    background:  ${props => props.theme.gray};
-    border: 1px solid  ${props => props.theme.gray};
+    background:  ${props => props.theme.bg_2};
+    border: 1px solid  ${props => props.theme.bg_2};
     padding: .7em;
     border-radius: 5px;
     text-align: center;
@@ -173,7 +173,7 @@ const LoginButton = styled.button`
     }
 
      &:hover {
-        border-color: ${props => props.theme.grayLight};
+        border-color: ${props => props.theme.secondary};
     }
 `
 
