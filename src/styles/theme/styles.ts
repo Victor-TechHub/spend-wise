@@ -17,3 +17,4 @@ export const lightTheme = {
     bg_3: "#FFF",
     textGray: "rgb(9, 9, 9)"
 }
+

@@ -10,12 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.7",
+    "@faker-js/faker": "^8.4.1",
     "@hookform/resolvers": "^3.6.0",
     "@types/node": "^20.14.2",
     "@types/styled-components": "^5.1.34",
+    "antd": "^5.18.2",
+    "chart.js": "^4.4.3",
     "firebase": "^10.12.2",
     "framer-motion": "^11.2.10",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-credit-cards-2": "^1.0.2",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.51.5",

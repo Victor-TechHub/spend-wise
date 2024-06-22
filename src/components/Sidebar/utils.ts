@@ -5,12 +5,17 @@ import { SlBadge } from "react-icons/sl";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { BsExclamationCircle } from "react-icons/bs";
 import { AiOutlinePieChart } from "react-icons/ai";
+import { PRIVATE_ROUTE } from "@/routes/path";
+import { useAuthCtx } from "@/context/Auth";
+import { useState } from "react";
+
+const { DASHBOARD, MESSAGES, SETTINGS } = PRIVATE_ROUTE
 
 export const MenuNavLinks = [
     {
         name: "Dashboard",
         icon: RxDashboard,
-        location: ""
+        location: DASHBOARD
     },
     {
         name: "Statistics",
@@ -25,7 +30,7 @@ export const MenuNavLinks = [
     {
         name: "Messages",
         icon: BiMessageSquareDetail,
-        location: ""
+        location: MESSAGES
     },
     {
         name: "Transactions",
@@ -38,7 +43,7 @@ export const GeneralNavLinks = [
     {
         name: "Settings",
         icon: IoSettingsOutline,
-        location: ""
+        location: SETTINGS
     },
     {
         name: "Appearance",
@@ -51,3 +56,42 @@ export const GeneralNavLinks = [
         location: ""
     },
 ]
+
+interface IuseLogout {
+    logOut: () => Promise<void>;
+    showModal: () => void;
+    handleCancel: () => void;
+    handleOk: () => void;
+    confirmLoading: boolean;
+    modalText: string;
+    open: boolean;
+}
+
+export const useLogout = (): IuseLogout => {
+    const { logOut } = useAuthCtx()
+    const [open, setOpen] = useState(false);
+    const [confirmLoading, setConfirmLoading] = useState(false);
+    const [modalText, setModalText] = useState('Are you sure you want to log out?');
+
+    const showModal = () => {
+        setOpen(true);
+        setModalText('Are you sure you want to log out?');
+    };
+
+    const handleOk = () => {
+        setModalText('Logging out');
+        setConfirmLoading(true);
+        setTimeout(() => {
+            setOpen(false);
+            setConfirmLoading(false);
+            logOut()
+        }, 3000);
+    };
+
+    const handleCancel = () => {
+        setOpen(false);
+
+    };
+
+    return { logOut, showModal, handleCancel, handleOk, confirmLoading, modalText, open }
+}

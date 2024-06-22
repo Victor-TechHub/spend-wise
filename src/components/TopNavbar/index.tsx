@@ -14,7 +14,14 @@ import user from "/demo_user.jpg"
 import { useThemeCtx } from "@/context/theme";
 import { useAuthCtx } from "@/context/Auth";
 
-const TopNavbar = () => {
+type TopNavBarProps = {
+    isNavOpen: boolean
+    setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const TopNavbar = (props: TopNavBarProps) => {
+    const properties = props
+    console.log(properties)
     const { LightThemeHandler, DarkThemeHandler, theme } = useThemeCtx()
     const { currentUser } = useAuthCtx()
     return (
@@ -58,7 +65,7 @@ const TopNavbar = () => {
                         <h3>{currentUser?.displayName}</h3>
                         <p>{currentUser?.email}</p>
                     </div>
-                    <IoIosArrowDown size={19} />
+                    <i><IoIosArrowDown size={19} /></i>
                 </UserInfoBtn>
             </Actions>
         </NavContainer>

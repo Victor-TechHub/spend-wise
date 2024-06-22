@@ -1,15 +1,22 @@
 import styled from "styled-components"
 
 const NavContainer = styled.section`
-    display: grid;
+    display: flex;
     gap: 2em;
-    padding: 1em;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.5em;
+    height: 12dvh;
+
+    @media screen and (max-width: 550px) {
+        flex-direction: column-reverse;
+        height: fit-content;
+    }
+
 `
 
 const Greetings = styled.div`
     line-height: 35px;
-    
     h3 {
         color: ${props => props.theme.color};
         display: flex;
@@ -26,7 +33,8 @@ const Greetings = styled.div`
 `
 const Actions = styled.div`
    display: flex;
-   align-items: center;
+   align-items: flex-start;
+   justify-content: flex-end;
    gap: 9px;
 `
 
@@ -103,6 +111,12 @@ const UserInfoBtn = styled.section`
     p {
         font-size: 10px;
         margin-inline-end: 10px;
+    }
+
+    @media screen and (max-width: 550px) {
+        div, i {
+            display: none;
+        }
     }
 `
 

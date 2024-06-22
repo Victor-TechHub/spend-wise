@@ -4,7 +4,6 @@ import { InputProps } from "@/types/form";
 import { FaRegEyeSlash } from "react-icons/fa6";
 
 const TextField = (props: InputProps) => {
-
     const {
         label,
         type,
@@ -15,12 +14,12 @@ const TextField = (props: InputProps) => {
         setIsTypePassword,
         isTypePassword
     } = props
+
     return (
         <InputField>
             <label htmlFor={name}>{label}</label>
             <Field
-                style={{ borderColor: error && "red" }}
-            >
+                style={{ borderColor: error && "red" }}>
                 <input
                     type={type}
                     placeholder={placeholder}

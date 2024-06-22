@@ -11,7 +11,7 @@ export interface IuseFormValiation {
     errors: FieldErrors<FormData>
     handleSubmit: UseFormHandleSubmit<FormData>
     onSubmit: (data: FormData) => void
-    handleClick: (e: React.FormEvent) => void
+    handleClick: () => void
 }
 
 export interface InputProps {

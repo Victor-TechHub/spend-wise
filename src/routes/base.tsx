@@ -4,7 +4,9 @@ import { ACCESS_ROUTE, PRIVATE_ROUTE } from "./path"
 import SignIn from "@/screens/auth/sign_in"
 import SignUp from "@/screens/auth/sign_up"
 import ProtectedRoutes from "@/layout/ProtectedRoutes"
-import Home from "@/screens/private/dashboard"
+import Dashboard from "@/screens/private/dashboard"
+import Messages from "@/screens/private/messages"
+import Settings from "@/screens/private/settings"
 
 export const routes = createBrowserRouter([
 
@@ -23,7 +25,20 @@ export const routes = createBrowserRouter([
     },
 
     {
-        path: PRIVATE_ROUTE.DASHBOARD,
-        element: <ProtectedRoutes children={< Home />} />
+        element: <ProtectedRoutes />,
+        children: [
+            {
+                path: PRIVATE_ROUTE.DASHBOARD,
+                element: <Dashboard />
+            },
+            {
+                path: PRIVATE_ROUTE.MESSAGES,
+                element: <Messages />
+            },
+            {
+                path: PRIVATE_ROUTE.SETTINGS,
+                element: <Settings />
+            }
+        ]
     }
 ])

@@ -17,8 +17,7 @@ const useSignUp = (): IuseFormValiation => {
         signUp(email, password, username, navigate)
     }
 
-    const handleClick = (e: React.FormEvent) => {
-        e.preventDefault()
+    const handleClick = () => {
         signInWithGoogle(navigate)
     }
     return { register, errors, handleSubmit, onSubmit, handleClick }

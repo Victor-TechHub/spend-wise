@@ -2,11 +2,12 @@ import styled, { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
     *,*::before,*::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: "Montserrat", sans-serif;
-    font-size: 13px;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        font-size: 12px;
+        scroll-behavior: smooth;
     }
 `
 

@@ -41,7 +41,7 @@ const Header = styled.header`
 `
 
 const Select = styled.select`
-    border: 1px solid ${props => props.theme.bgLight};
+    border: 1px solid ${props => props.theme.bg_2};
     padding: .6em 1.5em;
     background: ${props => props.theme.background};
     border-radius: 5px;
@@ -95,16 +95,23 @@ const FormContainer = styled.form`
 
 `
 
-const LoginSDKs = styled(FormContainer)`
+const LoginSDKs = styled.section`
+    display: grid;
+    gap: 1em;
+    width: 80%;
+    margin: auto;
+    h2 {
+        font-size: 2em;
+        font-weight: 400;
+    }
 
-h2 {
-    font-size: 2em;
-    font-weight: 400;
-}
+    p {
+        color:${props => props.theme.textGray};
+    }
 
-p {
-    color:${props => props.theme.textGray};
-}
+     @media screen and (max-width: 550px){
+     width: 100% !important;
+    }
 `
 
 const ButtonSDK = styled.button`

@@ -6,7 +6,7 @@ const ToastElement = () => {
     const context = useThemeCtx()
     return (
         <ToastContainer
-            position="top-left"
+            position="top-right"
             stacked
             draggable
             theme={context.theme}
