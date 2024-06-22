@@ -7,6 +7,8 @@ import { forwardRef } from "react";
 
 
 const RecentTransaction = forwardRef((props, ref: React.LegacyRef<HTMLElement> | undefined) => {
+    const properties = props
+    console.log(properties)
     return (
         <RecentTransactionContainer ref={ref}>
             <header>

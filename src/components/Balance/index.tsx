@@ -7,6 +7,8 @@ import { useCreditCardController } from "./utils";
 import React, { forwardRef } from "react";
 
 const Balance = forwardRef((props, ref: React.LegacyRef<HTMLFormElement> | undefined) => {
+    const properties = props
+    console.log(properties)
     const {
         cardData,
         showModal,

@@ -5,6 +5,8 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 import { forwardRef } from "react";
 
 const AnalysisCard = forwardRef((props, ref: React.LegacyRef<HTMLElement> | undefined) => {
+    const properties = props
+    console.log(properties)
     return (
         <CardWrapper ref={ref}>
             {Details.map((item, idx) => (
