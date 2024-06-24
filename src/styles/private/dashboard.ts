@@ -1,9 +1,8 @@
 import styled from "styled-components"
 
-const DashboardWrapper = styled.main`
+const DashboardWrapper = styled.main<{ $fullWidth: boolean }>`
     background: ${props => props.theme.background};
-    width: 84%; //sidebar is 16%, (84 + 16 )equivalent to 100%
-    /* height: 100dvh; */
+    width: ${props => props.$fullWidth ? "84dvw" : "100dvw"}; //sidebar is 16%, (84 + 16 )equivalent to 100%
 
     @media screen and (max-width:500px) {
         width: 100% !important;

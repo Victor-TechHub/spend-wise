@@ -6,22 +6,26 @@ import {
     SingleActionBtn,
     UserInfoBtn
 } from "./style"
-import { MdOutlineWavingHand, MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
+import {
+    MdOutlineWavingHand,
+    MdOutlineLightMode,
+    MdOutlineDarkMode
+} from "react-icons/md";
+import { HiBars3CenterLeft } from "react-icons/hi2";
 import { CiSearch } from "react-icons/ci";
 import { GoBell } from "react-icons/go";
 import { IoIosArrowDown } from "react-icons/io";
 import user from "/demo_user.jpg"
 import { useThemeCtx } from "@/context/theme";
 import { useAuthCtx } from "@/context/Auth";
+import { Tooltip } from "antd";
 
 type TopNavBarProps = {
-    isNavOpen: boolean
     setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const TopNavbar = (props: TopNavBarProps) => {
-    const properties = props
-    console.log(properties)
+    const { setIsNavOpen } = props
     const { LightThemeHandler, DarkThemeHandler, theme } = useThemeCtx()
     const { currentUser } = useAuthCtx()
     return (
@@ -32,6 +36,14 @@ const TopNavbar = (props: TopNavBarProps) => {
             </Greetings>
 
             <Actions>
+                <SingleActionBtn>
+                    <Tooltip title="Toggle Sidebar">
+                        <HiBars3CenterLeft
+                            size={19}
+                            onClick={() => setIsNavOpen(state => !state)} />
+                    </Tooltip>
+                </SingleActionBtn>
+
                 <SingleActionBtn>
                     <CiSearch size={19} />
                 </SingleActionBtn>

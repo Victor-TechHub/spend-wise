@@ -12,8 +12,7 @@ const SideBarContainer = styled.nav`
    gap: 2em;
 
       @media screen and (max-width: 550px) {
-      display: none;
-      /* width: 100%; */
+      width: 100%;
    }
 `
 

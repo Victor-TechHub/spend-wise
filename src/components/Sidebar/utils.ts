@@ -93,5 +93,25 @@ export const useLogout = (): IuseLogout => {
 
     };
 
-    return { logOut, showModal, handleCancel, handleOk, confirmLoading, modalText, open }
+    return {
+        logOut,
+        showModal,
+        handleCancel,
+        handleOk,
+        confirmLoading,
+        modalText,
+        open
+    }
+}
+
+
+//Animations (Framer-Motion)
+export const sidebarParent = {
+    hide: { x: "-100%", opaciy: 0, },
+    show: { x: 0, opacity: 1, },
+}
+
+export const sidebarChildren = {
+    hide: { x: -50, opacity: 0 },
+    show: { x: 0, opacity: 1 },
 }
