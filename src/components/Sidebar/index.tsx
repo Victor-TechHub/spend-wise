@@ -4,16 +4,18 @@ import LOGO from "/spendwise_logo.png"
 import { GeneralNavLinks, MenuNavLinks, sidebarChildren, sidebarParent, useLogout } from "./utils"
 import { Link } from "react-router-dom"
 import { SlLogout } from "react-icons/sl";
+import { AiOutlineClose } from "react-icons/ai";
 import { Modal } from 'antd';
 import { GoAlert } from "react-icons/go";
 import { AnimatePresence, motion } from "framer-motion"
 
 type SideBarProps = {
     isNavOpen: boolean
+    setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const SideBar = (props: SideBarProps) => {
-    const { isNavOpen } = props
+    const { isNavOpen, setIsNavOpen } = props
     const {
         handleOk,
         confirmLoading,
@@ -39,7 +41,10 @@ const SideBar = (props: SideBarProps) => {
                         }}
                         variants={sidebarParent}
                     >
-                        <Logo><img src={LOGO} width={40} alt="Logo" />pendWise</Logo>
+                        <header>
+                            <Logo><img src={LOGO} width={40} alt="Logo" />pendWise</Logo>
+                            <AiOutlineClose size={16} onClick={() => setIsNavOpen(false)} />
+                        </header>
                         <MotionNavigationLinks
                             initial="hide"
                             animate="show"

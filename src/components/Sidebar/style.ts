@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 const SideBarContainer = styled.nav`
-   position: relative;
+   position: fixed;
+   left: 0;
    background-color: ${props => props.theme.bg_3};
    width: 16%;
    padding-inline: 1.4rem;
@@ -10,9 +11,17 @@ const SideBarContainer = styled.nav`
    flex-direction: column;
    align-items: flex-start;
    gap: 2em;
+   z-index: 5;
+
+   :is(header:first-child) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
 
       @media screen and (max-width: 550px) {
-      width: 100%;
+      width: 60%;
    }
 `
 

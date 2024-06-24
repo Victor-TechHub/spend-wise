@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const DashboardWrapper = styled.main<{ $fullWidth: boolean }>`
     background: ${props => props.theme.background};
-    width: ${props => props.$fullWidth ? "84dvw" : "100dvw"}; //sidebar is 16%, (84 + 16 )equivalent to 100%
+    width: ${props => props.$fullWidth ? "100dvw" : "100dvw"}; //sidebar is 16%, (84 + 16 )equivalent to 100%
 
     @media screen and (max-width:500px) {
         width: 100% !important;
@@ -13,10 +13,12 @@ const Wrapper = styled.section`
     display: flex;
     gap: 13px;
     padding:10px 1.5em;
-    height: calc(100dvh - 12dvh); //TopNavbar is 10dvh, (90 + 10) equivalent to 100dvh
+    height: 100dvh;
+    background: ${props => props.theme.background};
 
     @media screen and (max-width: 550px) {
         flex-direction: column;
+        height: fit-content;
     }
 `
 

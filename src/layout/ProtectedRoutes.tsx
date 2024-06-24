@@ -11,12 +11,12 @@ import { Navigate, Outlet } from "react-router-dom"
 const ProtectedRoutes = () => {
     const { currentUser } = useAuthCtx()
     // const user = true
-    const [isNavOpen, setIsNavOpen] = useState(true)
+    const [isNavOpen, setIsNavOpen] = useState(false)
 
     return !!currentUser
         ?
         <MainContainer>
-            <SideBar isNavOpen={isNavOpen} />
+            <SideBar isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
             <DashboardWrapper $fullWidth={isNavOpen}>
                 <TopNavbar setIsNavOpen={setIsNavOpen} />
                 <Outlet />
