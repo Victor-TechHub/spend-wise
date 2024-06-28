@@ -3,14 +3,10 @@ import { Rate, RecentTransactionContainer, Recents } from "./style"
 import { IoIosMore } from "react-icons/io";
 import { recentDetails } from "./utils";
 import { BsArrowUp, BsArrowDown } from "react-icons/bs";
-import { forwardRef } from "react";
 
-
-const RecentTransaction = forwardRef((props, ref: React.LegacyRef<HTMLElement> | undefined) => {
-    const properties = props
-    console.log(properties)
+const RecentTransaction = () => {
     return (
-        <RecentTransactionContainer ref={ref}>
+        <RecentTransactionContainer>
             <header>
                 <p>Recent</p>
                 <Tooltip title="See all">
@@ -40,6 +36,6 @@ const RecentTransaction = forwardRef((props, ref: React.LegacyRef<HTMLElement> |
             })}
         </RecentTransactionContainer>
     )
-})
+}
 
 export default RecentTransaction

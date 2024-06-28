@@ -10,7 +10,7 @@ import { Navigate, Outlet } from "react-router-dom"
 
 const ProtectedRoutes = () => {
     const { currentUser } = useAuthCtx()
-    // const user = true
+    const user = true
     const [isNavOpen, setIsNavOpen] = useState(false)
 
     return !!currentUser

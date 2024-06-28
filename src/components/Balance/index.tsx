@@ -4,11 +4,8 @@ import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { Button, Flex, Input, Modal, Tooltip } from "antd";
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { useCreditCardController } from "./utils";
-import React, { forwardRef } from "react";
 
-const Balance = forwardRef((props, ref: React.LegacyRef<HTMLFormElement> | undefined) => {
-    const properties = props
-    console.log(properties)
+const Balance = () => {
     const {
         cardData,
         showModal,
@@ -24,7 +21,7 @@ const Balance = forwardRef((props, ref: React.LegacyRef<HTMLFormElement> | undef
     const cardDataValues = Object.values(cardData).map((item) => item)
 
     return (
-        <BalanceContainer ref={ref}>
+        <BalanceContainer>
             <Cards
                 number={cardData.number}
                 expiry={cardData.expiry}
@@ -80,6 +77,6 @@ const Balance = forwardRef((props, ref: React.LegacyRef<HTMLFormElement> | undef
             </Modal>
         </BalanceContainer>
     )
-})
+}
 
 export default Balance

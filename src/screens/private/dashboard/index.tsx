@@ -4,41 +4,42 @@ import AnalysisChart from "@/components/Chart/AnalysisChart"
 // import Invoice from "@/components/Invoice"
 import RecentTransaction from "@/components/RecentTransaction"
 import { LeftContainer, RightContainer, Wrapper } from "@/styles/private/dashboard"
-import { FloatButton, Tooltip, Tour } from 'antd';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import { useState } from "react"
-import { useTourSteps } from "./utils"
+import { FloatButton, Modal, Tooltip, Tour } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { useModal } from "./utils"
+import AddIncomeExpense from "@/components/AddTransaction/AddIncomeExpense"
 
 const Dashboard = () => {
-    const [open, setOpen] = useState<boolean>(false);
-    const { ref1, ref2, ref3, ref4, steps } = useTourSteps()
+    const { isModalOpen, showModal, handleOk, handleCancel } = useModal()
     return (
         <Wrapper>
             <LeftContainer>
-                <AnalysisCard ref={ref1} />
-                <AnalysisChart ref={ref2} />
+                <AnalysisCard />
+                <AnalysisChart />
                 {/* <Invoice /> */}
             </LeftContainer>
 
             <RightContainer>
-                <Balance ref={ref3} />
-                <RecentTransaction ref={ref4} />
+                <Balance />
+                <RecentTransaction />
             </RightContainer>
 
-            <Tooltip title="Need Help?">
+            <Tooltip title="Add Income/Expense">
                 <FloatButton
-                    icon={<QuestionCircleOutlined />}
+                    icon={<PlusOutlined />}
                     type="default"
                     style={{ right: 24 }}
-                    onClick={() => setOpen(true)}
+                    onClick={showModal}
                 />
             </Tooltip>
 
-            <Tour
-                open={open}
-                onClose={() => setOpen(false)}
-                steps={steps}
-            />
+            <Modal
+                title="Add Income/Expense"
+                open={isModalOpen}
+                onOk={handleOk}
+                onCancel={handleCancel}>
+                <AddIncomeExpense />
+            </Modal>
         </Wrapper>
     )
 }

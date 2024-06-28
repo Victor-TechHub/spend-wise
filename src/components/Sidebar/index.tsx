@@ -9,7 +9,7 @@ import { Modal } from 'antd';
 import { GoAlert } from "react-icons/go";
 import { AnimatePresence, motion } from "framer-motion"
 
-type SideBarProps = {
+interface SideBarProps {
     isNavOpen: boolean
     setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
@@ -34,16 +34,26 @@ const SideBar = (props: SideBarProps) => {
                 isNavOpen &&
                 <AnimatePresence>
                     <MotionSideBarContainer
-                        initial={"hide"}
-                        animate={"show"}
+                        initial="hide"
+                        animate="show"
                         transition={{
                             type: "tween",
                         }}
                         variants={sidebarParent}
                     >
                         <header>
-                            <Logo><img src={LOGO} width={40} alt="Logo" />pendWise</Logo>
-                            <AiOutlineClose size={16} onClick={() => setIsNavOpen(false)} />
+                            <Logo>
+                                <img
+                                    src={LOGO}
+                                    width={40}
+                                    alt="Logo"
+                                />
+                                pendWise
+                            </Logo>
+                            <AiOutlineClose
+                                size={16}
+                                onClick={() => setIsNavOpen(false)}
+                            />
                         </header>
                         <MotionNavigationLinks
                             initial="hide"
@@ -54,7 +64,7 @@ const SideBar = (props: SideBarProps) => {
                             {MenuNavLinks.map((nav, idx) => {
                                 return (
                                     <Link key={idx} to={nav.location}>
-                                        <li>
+                                        <li onClick={() => setIsNavOpen(false)}>
                                             <nav.icon size={16} />
                                             {nav.name}
                                         </li>
@@ -72,7 +82,7 @@ const SideBar = (props: SideBarProps) => {
                             {GeneralNavLinks.map((nav, idx) => {
                                 return (
                                     <Link key={idx} to={nav.location}>
-                                        <li>
+                                        <li onClick={() => setIsNavOpen(false)}>
                                             <nav.icon size={16} />
                                             {nav.name}
                                         </li>

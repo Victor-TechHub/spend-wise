@@ -28,22 +28,26 @@ const TopNavbar = (props: TopNavBarProps) => {
     const { setIsNavOpen } = props
     const { LightThemeHandler, DarkThemeHandler, theme } = useThemeCtx()
     const { currentUser } = useAuthCtx()
+
+    function greetUser() {
+        const timezone = new Date().getHours()
+        const greetings = timezone >= 6 && timezone < 12
+            ? "Morning"
+            :
+            timezone >= 12 && timezone < 18
+                ? "Afternoon"
+                : "Night"
+        return greetings
+    }
+
     return (
         <NavContainer>
             <Greetings>
-                <h3>Good Morning {currentUser?.displayName} <MdOutlineWavingHand size={19} color="#F4C469" /></h3>
+                <h3>Good {greetUser()} {currentUser?.displayName} <MdOutlineWavingHand size={19} color="#F4C469" /></h3>
                 <p>Here's what happened In Your Account Today</p>
             </Greetings>
 
             <Actions>
-                <SingleActionBtn>
-                    <Tooltip title="Toggle Sidebar">
-                        <HiBars3CenterLeft
-                            size={19}
-                            onClick={() => setIsNavOpen(state => !state)} />
-                    </Tooltip>
-                </SingleActionBtn>
-
                 <SingleActionBtn>
                     <CiSearch size={19} />
                 </SingleActionBtn>
@@ -79,6 +83,14 @@ const TopNavbar = (props: TopNavBarProps) => {
                     </div>
                     <i><IoIosArrowDown size={19} /></i>
                 </UserInfoBtn>
+
+                <SingleActionBtn>
+                    <Tooltip title="Toggle Sidebar">
+                        <HiBars3CenterLeft
+                            size={19}
+                            onClick={() => setIsNavOpen(state => !state)} />
+                    </Tooltip>
+                </SingleActionBtn>
             </Actions>
         </NavContainer>
     )

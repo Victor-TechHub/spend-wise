@@ -59,7 +59,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 email,
                 username,
                 password,
-                createdAt: serverTimestamp()
+                createdAt: serverTimestamp(),
             }) // adds new users to firestore
 
             setTimeout(() => setIsSigningUp(false), 3000)
@@ -82,7 +82,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setTimeout(() => setIsLoggingIn(false), 3000)
         } catch (err) {
             setIsLoggingIn(false)
-            err instanceof Error && toast.error(err.message)
+            err instanceof Error && toast.error("Invalid credentials")
         }
     }
 
@@ -95,7 +95,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setTimeout(() => setIsLoggingIn(false), 3000)
         } catch (err) {
             setIsLoggingIn(false)
-            err instanceof Error && toast.error(err.message)
+            err instanceof Error && toast.error("Oops! something went wrong")
         }
     }
 

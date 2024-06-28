@@ -1,6 +1,4 @@
-import { forwardRef } from "react"
 import { ActionButtons, Chart } from "./style"
-import React from 'react';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -25,12 +23,9 @@ ChartJS.register(
     Legend
 );
 
-const AnalysisChart = forwardRef((props, ref: React.LegacyRef<HTMLElement> | undefined) => {
-    const properties = props
-    console.log(properties)
-
+const AnalysisChart = () => {
     return (
-        <Chart ref={ref}>
+        <Chart>
             <ActionButtons>
                 <Flex wrap gap="small">
                     <Tooltip title="Add to your finances">
@@ -45,6 +40,6 @@ const AnalysisChart = forwardRef((props, ref: React.LegacyRef<HTMLElement> | und
             <Bar options={options} data={data} />
         </Chart>
     )
-})
+}
 
 export default AnalysisChart
