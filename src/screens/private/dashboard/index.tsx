@@ -4,7 +4,7 @@ import AnalysisChart from "@/components/Chart/AnalysisChart"
 // import Invoice from "@/components/Invoice"
 import RecentTransaction from "@/components/RecentTransaction"
 import { LeftContainer, RightContainer, Wrapper } from "@/styles/private/dashboard"
-import { FloatButton, Modal, Tooltip, Tour } from 'antd';
+import { FloatButton, Modal, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { useModal } from "./utils"
 import AddIncomeExpense from "@/components/AddTransaction/AddIncomeExpense"
