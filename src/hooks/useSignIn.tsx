@@ -21,7 +21,6 @@ const useSignIn = (): IuseFormValiation => {
         signInWithGoogle(navigate)
     }
 
-
     return { register, errors, handleSubmit, onSubmit, handleClick }
 }
 

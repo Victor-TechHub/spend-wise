@@ -6,6 +6,8 @@ import { useAuthCtx } from "@/context/Auth";
 import { useEffect, useState } from "react";
 import { getUserTransactions } from "@/utils/getUserTransactions";
 import { UserTransactionData } from "@/types/transactions";
+import { getIncomeExpensePercentage } from "@/utils/getIncomeExpensePercentage";
+
 
 type IDetails = DetailsObj[]
 
@@ -27,11 +29,17 @@ export const colorAccents = {
 export const useAnalysisCard = () => {
     const { currentUser } = useAuthCtx()
     const [data, setData] = useState<UserTransactionData | undefined>(undefined)
+    const [incomePercentage, setIncomePercentage] = useState(0)
+    const [expensePercentage, setExpensePercentage] = useState(0)
+
 
     useEffect(() => {
         const fetchData = async () => {
             const res = await getUserTransactions(currentUser?.uid as string)
+            const percentageRes = await getIncomeExpensePercentage(currentUser?.uid as string)
             setData(res)
+            setIncomePercentage(Number(percentageRes.incomePercentage.toFixed(2)))
+            setExpensePercentage((Number(percentageRes.expensePercentage.toFixed(2))))
         }
         fetchData()
     }, [data])
@@ -41,8 +49,8 @@ export const useAnalysisCard = () => {
             field: "Total Income",
             amount: data?.totalIncome,
             icon: VscGraphLine,
-            rise: 9.2,
-            fall: null,
+            rise: incomePercentage > 0 ? incomePercentage : null,
+            fall: incomePercentage < 0 ? incomePercentage : null,
             colorAccent: "rgb(55, 124, 247)",
             colorAccentLight: "rgb(55, 124, 247, 0.1)"
         },
@@ -50,8 +58,8 @@ export const useAnalysisCard = () => {
             field: "Total Expense",
             amount: data?.totalExpense,
             icon: BsCreditCard2Front,
-            rise: null,
-            fall: 5.9,
+            rise: expensePercentage > 0 ? expensePercentage : null,
+            fall: expensePercentage < 0 ? expensePercentage : null,
             colorAccent: "rgb(246, 55, 147)",
             colorAccentLight: "rgb(246, 55, 147, 0.1)"
         },
@@ -59,7 +67,7 @@ export const useAnalysisCard = () => {
             field: "Total Balance",
             amount: data?.balance,
             icon: TbBrandCashapp,
-            rise: 7.5,
+            rise: 100,
             fall: null,
             colorAccent: "rgb(208, 55, 246)",
             colorAccentLight: "rgb(208, 55, 246, 0.1)"

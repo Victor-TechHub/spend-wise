@@ -5,6 +5,7 @@ export const getUserTransactions = async (userId: string) => {
     try {
         const snapShot = await getDocs(collection(database, "users", userId, "transactions"))
         const snapShotData = snapShot.docs.map(doc => doc.data())
+
         const totalIncome = snapShotData
             .filter(item => item.typeOfTransaction === "income")
             .map(item => item.amount)

@@ -5,12 +5,16 @@ import { BsArrowUp, BsArrowDown } from "react-icons/bs";
 
 const AnalysisCard = () => {
     const { Details } = useAnalysisCard()
+
+
     return (
         <CardWrapper>
             {Details.map((item, idx) => (
                 <Card key={idx}>
                     <div>
-                        <i style={{ background: item.colorAccentLight as any }}><item.icon size={16} color={item.colorAccent} /></i>
+                        <i style={{ background: item.colorAccentLight as any }}>
+                            <item.icon size={16} color={item.colorAccent} />
+                        </i>
                         <span><PiDotsThreeVerticalBold size={16} /></span>
                     </div>
 
